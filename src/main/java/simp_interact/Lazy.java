@@ -38,4 +38,9 @@ public class Lazy extends Dialogue{
 				"I've heard this town has the best apples! Could you bring me one to try, " + catchphrase + "?",
 				"Do you think I say \"" + catchphrase + "\" too much, " + catchphrase + "? Oh, see?! Can you give me a new catchphrase?"};
 	}
+	
+	@Override
+	public String getname() {
+		return names[rng.nextInt(4)];
+	}
 }
