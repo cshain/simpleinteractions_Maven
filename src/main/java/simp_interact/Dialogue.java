@@ -54,4 +54,5 @@ public abstract class Dialogue {
 	};
 	
 	protected abstract void resetCatchphrase();
+	public abstract String getname();
 }
