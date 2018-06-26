@@ -38,4 +38,9 @@ public class Snooty extends Dialogue{
 				"I'm so hungry. I passed by a peach tree earlier, and they looked really good. Would you mind getting one for me, " + catchphrase + "?",
 				"My friend told me that saying \"" + catchphrase + "\" is sooooo last year. Could you give me something else to say?"};
 	}
+	
+	@Override
+	public String getname() {
+		return names[rng.nextInt(4)];
+	}
 }
