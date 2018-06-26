@@ -14,8 +14,7 @@ public class Character{
 		}else{
 			personality = new Lazy();
 		}
-		
-		name = personality.names[rng.nextInt(4)];
+		name = personality.getname();
 	}
 	
 	public void sayHi(){
