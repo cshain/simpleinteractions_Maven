@@ -7,10 +7,6 @@ public abstract class Dialogue {
 	Random rng = new Random();
 	Scanner reader = new Scanner(System.in);
 	
-	//Initialized (Same across personalities)
-	protected String[] accepted = new String[] {"Great, thanks!", "Thank you so much!", "Thank you!"};
-	protected String[] denied = new String[] {"Oh... okay. Bye, then.", "Okay, bye.", "Fine, then..."};
-	
 	//Uninitialized (Different across personalities)
 	String[] names;
 	protected String catchphrase;
@@ -18,26 +14,32 @@ public abstract class Dialogue {
 	protected String[] statements;
 	protected String[] requests;
 	
+	//Initialized (Same across personalities)
+	protected String[] accepted = new String[] {"Great, thanks!", "Thank you so much!", "Thank you, " + catchphrase + "!"};
+	protected String[] denied = new String[] {"Oh... okay. Bye, then.", "Okay, bye, " + catchphrase + ".", "Fine, then..."};
+	
 	abstract void sayHi(String name);
+	protected abstract void resetCatchphrase();
+	public abstract String getname();
 	
 	public void speak(){
 		String input;
-		System.out.println(greetings[rng.nextInt(3)] + "\n(Type Hi to continue or Bye to exit the conversation)");
+		System.out.println(greetings[rng.nextInt(greetings.length)] + "\n(Type Hi to continue or Bye to exit the conversation)");
 		input = reader.next();
 		System.out.println("");
 		if(input.equalsIgnoreCase("Hi")){
 			if(rng.nextInt(2) == 0){
-				System.out.println(statements[rng.nextInt(3)]);
+				System.out.println(statements[rng.nextInt(statements.length)]);
 			}else{
-				int request = rng.nextInt(3);
+				int request = rng.nextInt(requests.length);
 				System.out.println(requests[request] + "\n(Y/N)");
 				input = reader.next();
 				System.out.println("");
 				if(input.equalsIgnoreCase("Y")){
 					if(request != 2){
-						System.out.println(accepted[rng.nextInt(3)]);
+						System.out.println(accepted[rng.nextInt(accepted.length)]);
 					}else{
-						System.out.println(accepted[rng.nextInt(3)] + " What is it?\nEnter a catchphrase!");
+						System.out.println(accepted[rng.nextInt(accepted.length)] + " What is it?\nEnter a catchphrase!");
 						reader.nextLine();
 						catchphrase = reader.nextLine();
 						System.out.println("");
@@ -45,14 +47,11 @@ public abstract class Dialogue {
 						resetCatchphrase();
 					}
 				}else{
-					System.out.println(denied[rng.nextInt(3)]);
+					System.out.println(denied[rng.nextInt(denied.length)]);
 				}
 			}
 		}else{
-			System.out.println(denied[rng.nextInt(3)]);
+			System.out.println(denied[rng.nextInt(denied.length)]);
 		}
 	};
-	
-	protected abstract void resetCatchphrase();
-	public abstract String getname();
 }
