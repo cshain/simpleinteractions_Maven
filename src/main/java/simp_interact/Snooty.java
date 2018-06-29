@@ -41,6 +41,6 @@ public class Snooty extends Dialogue{
 	
 	@Override
 	public String getname() {
-		return names[rng.nextInt(4)];
+		return names[rng.nextInt(names.length)];
 	}
 }
