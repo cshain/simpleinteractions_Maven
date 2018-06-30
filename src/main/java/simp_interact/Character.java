@@ -6,7 +6,7 @@ public class Character{
 	Random rng = new Random();
 	
 	private Dialogue personality;
-	private String name;
+	private String name; //name of the character
 	
 	public Character(){
 		if(rng.nextInt(2) == 0){
